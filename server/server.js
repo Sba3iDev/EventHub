@@ -71,6 +71,27 @@ app.post("/users", async (req, res) => {
     }
 });
 
+app.get("/users", (req, res) => {
+    db.all(`SELECT id, username, email, role, created_at FROM users`, [], (err, rows) => {
+        if (err) {
+            return res.status(400).send({ error: err.message });
+        }
+        res.status(200).send(rows);
+    });
+});
+
+app.get("/users/:id", (req, res) => {
+    db.get(`SELECT id, username, email, role, created_at FROM users WHERE id = ?`, [req.params.id], (err, row) => {
+        if (err) {
+            return res.status(400).send({ error: err.message });
+        }
+        if (!row) {
+            return res.status(404).send({ error: "User not found" });
+        }
+        res.status(200).send(row);
+    });
+});
+
 app.put("/users/:id", (req, res) => {
     const { username, email } = req.body;
     db.run(`UPDATE users SET username = ?, email = ? WHERE id = ?`, [username, email, req.params.id], function (err) {
