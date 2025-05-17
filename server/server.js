@@ -28,7 +28,7 @@ function createtables() {
             if (err) {
                 console.error("Error creating users table:", err.message);
             } else {
-                console.log("Users table ready");
+                console.log("Table created");
             }
         }
     );
