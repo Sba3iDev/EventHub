@@ -28,7 +28,27 @@ function createtables() {
             if (err) {
                 console.error("Error creating users table:", err.message);
             } else {
-                console.log("Table created");
+                console.log("Users table created");
+            }
+        }
+    );
+    db.run(
+        `CREATE TABLE IF NOT EXISTS events (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            title TEXT NOT NULL,
+            description TEXT,
+            category TEXT NOT NULL,
+            date TEXT NOT NULL,
+            time TEXT NOT NULL,
+            location TEXT NOT NULL,
+            user_id INTEGER NOT NULL,
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE)`,
+        (err) => {
+            if (err) {
+                console.error("Error creating users table:", err.message);
+            } else {
+                console.log("Events table created");
             }
         }
     );
