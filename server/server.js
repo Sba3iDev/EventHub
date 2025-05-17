@@ -54,9 +54,9 @@ function createtables() {
     );
 }
 
-app.post("/users", async (req, res) => {
-    const { username, email, role, password } = req.body;
+app.post("/users/register", async (req, res) => {
     try {
+        const { username, email, role, password } = req.body;
         const hashedPassword = await bcrypt.hash(password, 10);
         db.run(
             `INSERT INTO users (username, email, role, password) VALUES (?, ?, ?, ?)`,
@@ -66,6 +66,23 @@ app.post("/users", async (req, res) => {
                 res.status(201).send({ message: "User created successfully" });
             }
         );
+    } catch (err) {
+        res.status(500).send({ error: err.message });
+    }
+});
+
+app.post("/users/login", async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        db.get(`SELECT password FROM users WHERE email = ?`, [email], async (err, row) => {
+            if (err) return res.status(400).send({ error: err.message });
+            if (!row) return res.status(404).send({ error: "User not found" });
+            const match = await bcrypt.compare(password, row.password);
+            if (!match) {
+                return res.status(401).send({ error: "Invalid password" });
+            }
+            res.status(200).send({ message: "Login successful" });
+        });
     } catch (err) {
         res.status(500).send({ error: err.message });
     }
