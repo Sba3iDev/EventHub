@@ -11,11 +11,11 @@ const db = new sqlite.Database("./database/database.db", (err) => {
         console.error("Error opening database:", err.message);
     } else {
         console.log("Connected to database");
-        initializeDatabase();
+        createtables();
     }
 });
 
-function initializeDatabase() {
+function createtables() {
     db.run(
         `CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
