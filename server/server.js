@@ -71,6 +71,19 @@ app.post("/users", async (req, res) => {
     }
 });
 
+app.put("/users/:id", (req, res) => {
+    const { username, email } = req.body;
+    db.run(`UPDATE users SET username = ?, email = ? WHERE id = ?`, [username, email, req.params.id], function (err) {
+        if (err) {
+            return res.status(400).send({ error: err.message });
+        }
+        if (this.changes === 0) {
+            return res.status(404).send({ error: "User not found" });
+        }
+        res.status(200).send({ message: "User updated successfully" });
+    });
+});
+
 app.delete("/users/:id", (req, res) => {
     const userId = req.params.id;
     if (isNaN(userId)) {
