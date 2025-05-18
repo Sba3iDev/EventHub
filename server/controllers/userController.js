@@ -60,7 +60,6 @@ export const updateUser = (req, res) => {
 export const deleteUser = (req, res) => {
     const userId = req.params.id;
     if (isNaN(userId)) return res.status(400).send({ error: "Invalid user ID" });
-
     db.run(`DELETE FROM users WHERE id = ?`, [userId], function (err) {
         if (err) return res.status(500).send({ error: err.message });
         if (this.changes === 0) return res.status(404).send({ error: "User not found" });

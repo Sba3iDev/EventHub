@@ -28,3 +28,13 @@ export const updateEvent = (req, res) => {
         }
     );
 };
+
+export const deleteEvent = (req, res) => {
+    const userId = req.params.id;
+    if (isNaN(userId)) return res.status(400).send({ error: "Invalid user ID" });
+    db.run(`DELETE FROM events WHERE id = ?`, [userId], function (err) {
+        if (err) return res.status(500).send({ error: err.message });
+        if (this.changes === 0) return res.status(404).send({ error: "Event not found" });
+        res.status(200).send({ message: "Event deleted successfully" });
+    });
+};
