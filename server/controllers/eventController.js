@@ -16,6 +16,29 @@ export const createEvent = (req, res) => {
     }
 };
 
+export const getAllEvents = (req, res) => {
+    db.all(
+        `SELECT id, title, description, category, date, time, location, user_id, created_at FROM events`,
+        [],
+        (err, rows) => {
+            if (err) return res.status(400).send({ error: err.message });
+            res.status(200).send(rows);
+        }
+    );
+};
+
+export const getEvent = (req, res) => {
+    db.get(
+        `SELECT id, title, description, category, date, time, location, user_id, created_at FROM events WHERE id = ?`,
+        [req.params.id],
+        (err, row) => {
+            if (err) return res.status(400).send({ error: err.message });
+            if (!row) return res.status(404).send({ error: "Event not found" });
+            res.status(200).send(row);
+        }
+    );
+};
+
 export const updateEvent = (req, res) => {
     const { title, description, category, date, time, location } = req.body;
     db.run(
