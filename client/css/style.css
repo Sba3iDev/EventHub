@@ -2,24 +2,26 @@
     --primary-color: #ffffff;
     --secondary-color: #2563eb;
     --background-color: #f1f5f9;
-    --shadow-box: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.containers {
+    background-color: var(--primary-color);
+    margin: 10px 10px 30px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
 }
 
 .header-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: var(--primary-color);
-    margin: 10px;
-    padding: 20px;
-    font-size: larger;
-    border-radius: 10px;
-    box-shadow: var(--shadow-box);
 }
 
 .header-container .title {
     color: var(--secondary-color);
     cursor: pointer;
+    font-size: 25px;
 }
 
 .header-container .title span {
@@ -37,7 +39,6 @@
     top: 50%;
     transform: translateY(-50%);
     font-size: 14px;
-    /* pointer-events: none; */
     cursor: pointer;
 }
 
@@ -70,6 +71,68 @@
 }
 
 .header-container .account span {
-    font-size: medium;
+    font-size: larger;
     padding-left: 10px;
+}
+
+.events-container .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    font-size: larger;
+}
+
+.events-container .nav span {
+    font-weight: bolder;
+    padding-left: 20px;
+}
+
+.events-container .filter {
+    display: flex;
+    align-items: center;
+}
+
+.events-container .filter i {
+    padding: 0px 10px;
+    color: var(--secondary-color);
+}
+
+.events-container .filter input {
+    padding: 5px;
+    outline: none;
+    border-bottom: 1px solid transparent;
+    transition: border-bottom-color 0.2s ease;
+}
+
+.events-container .filter input:focus {
+    border-bottom: 1px solid #000000;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 20px 12px;
+    text-align: left;
+    border-bottom: 1px solid #e2e8f0;
+    white-space: normal;
+    word-break: break-word;
+}
+
+td:first-of-type {
+    max-width: 700px;
+}
+
+th {
+    background-color: var(--background-color);
+    color: #64748b;
+    font-weight: 600;
+}
+
+tr:hover {
+    background-color: #d8eaff;
 }

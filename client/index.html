@@ -9,19 +9,40 @@
         <title>Events Hub</title>
     </head>
     <body>
-        <div class="header-container">
+        <div class="containers header-container">
             <div class="title">
-                <i class="fas fa-calendar"></i>
+                <i class="fas fa-calendar-day"></i>
                 <span>Events Hub</span>
             </div>
             <div class="search">
                 <i class="fas fa-search"></i>
-                <input type="search" name="search" id="search" placeholder="Search events..." />
+                <input type="search" name="search" id="search" placeholder="Search events by title..." />
             </div>
             <div class="account">
                 <i class="fas fa-circle-user"></i>
                 <span>User</span>
             </div>
+        </div>
+        <div class="containers events-container">
+            <div class="nav">
+                <span>Events</span>
+                <div class="filter">
+                    <i class="fas fa-filter"></i>
+                    <input type="text" placeholder="Filter" readonly />
+                </div>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Category</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Location</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
         </div>
     </body>
 </html>
