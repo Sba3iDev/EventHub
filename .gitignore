@@ -2,7 +2,7 @@
 node_modules/
 
 # Docs
-docs/
+doc/
 
 # Environment variables
 .env
