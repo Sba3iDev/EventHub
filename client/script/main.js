@@ -2,6 +2,7 @@ import { fetchEvents } from "./api.js";
 
 const eventTable = document.querySelector(".events-container table tbody");
 const searchInput = document.querySelector("#search");
+const events = await fetchEvents();
 
 function renderEvents(events) {
     eventTable.innerHTML = events
@@ -20,7 +21,6 @@ function renderEvents(events) {
 
 async function loadEvents() {
     try {
-        const events = await fetchEvents();
         renderEvents(events);
     } catch (error) {
         console.error("Failed to load events:", error);
@@ -32,7 +32,6 @@ function filterEvents(events, searchTerm) {
 }
 
 searchInput.addEventListener("input", async (e) => {
-    const events = await fetchEvents();
     const filtered = filterEvents(events, e.target.value);
     renderEvents(filtered);
 });
