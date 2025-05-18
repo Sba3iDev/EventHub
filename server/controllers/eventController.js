@@ -15,3 +15,16 @@ export const createEvent = (req, res) => {
         res.status(500).send({ error: err.message });
     }
 };
+
+export const updateEvent = (req, res) => {
+    const { title, description, category, date, time, location } = req.body;
+    db.run(
+        `UPDATE events SET title = ?, description = ?, category = ?, date = ?, time = ?, location = ? WHERE id = ?`,
+        [title, description, category, date, time, location],
+        function (err) {
+            if (err) return res.status(400).send({ error: err.message });
+            if (this.changes === 0) return res.status(404).send({ error: "Event not found" });
+            res.status(200).send({ message: "Event updated successfully" });
+        }
+    );
+};
