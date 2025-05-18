@@ -39,7 +39,6 @@
     top: 50%;
     transform: translateY(-50%);
     font-size: 14px;
-    cursor: pointer;
 }
 
 .header-container .search input {
@@ -83,7 +82,7 @@
     font-size: larger;
 }
 
-.events-container .nav span {
+.events-container .nav span:first {
     font-weight: bolder;
     padding-left: 20px;
 }
@@ -91,6 +90,7 @@
 .events-container .filter {
     display: flex;
     align-items: center;
+    position: relative;
 }
 
 .events-container .filter i {
@@ -107,6 +107,39 @@
 
 .events-container .filter input:focus {
     border-bottom: 1px solid #000000;
+}
+
+.events-container .filter .category-filter {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 14%;
+    background-color: #efefef;
+    width: 86%;
+    border-radius: 10px;
+}
+
+.events-container .filter .category-filter span {
+    width: 100%;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.events-container .filter .category-filter span:first-child {
+    border-radius: 10px 10px 0 0;
+}
+
+.events-container .filter .category-filter span:last-child {
+    border-radius: 0 0 10px 10px;
+}
+
+.events-container .filter .category-filter span:only-child {
+    border-radius: 10px;
+}
+
+.events-container .filter .category-filter span:hover {
+    background-color: #d8eaff;
 }
 
 table {
