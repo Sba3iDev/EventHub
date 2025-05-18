@@ -1,0 +1,75 @@
+:root {
+    --primary-color: #ffffff;
+    --secondary-color: #2563eb;
+    --background-color: #f1f5f9;
+    --shadow-box: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--primary-color);
+    margin: 10px;
+    padding: 20px;
+    font-size: larger;
+    border-radius: 10px;
+    box-shadow: var(--shadow-box);
+}
+
+.header-container .title {
+    color: var(--secondary-color);
+    cursor: pointer;
+}
+
+.header-container .title span {
+    font-weight: bolder;
+    padding-left: 5px;
+}
+
+.header-container .search {
+    position: relative;
+}
+
+.header-container .search i {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    /* pointer-events: none; */
+    cursor: pointer;
+}
+
+.header-container .search input {
+    background-color: var(--background-color);
+    font-size: small;
+    padding: 10px 35px;
+    width: 400px;
+    border-radius: 5px;
+}
+
+.header-container .search input:focus {
+    outline: none;
+}
+
+.header-container .search input::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.header-container .account {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.header-container .account i {
+    color: var(--secondary-color);
+    font-size: 200%;
+}
+
+.header-container .account span {
+    font-size: medium;
+    padding-left: 10px;
+}
