@@ -75,10 +75,16 @@
     padding: 10px 35px;
     width: 400px;
     border-radius: 5px;
+    border: 1px solid transparent;
 }
 
 .events-container .nav .search input:focus {
     outline: none;
+    border-color: var(--secondary-color);
+}
+
+.events-container .nav .search:hover input {
+    border-color: var(--secondary-color);
 }
 
 .events-container .nav .search input::-webkit-search-cancel-button {
