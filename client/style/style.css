@@ -135,6 +135,7 @@ td {
     border-bottom: 1px solid #e2e8f0;
     white-space: normal;
     word-break: break-word;
+    width: 300px;
 }
 
 th:first-of-type,
