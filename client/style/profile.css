@@ -72,6 +72,7 @@
 .container .buttons button {
     display: flex;
     align-items: center;
+    justify-content: space-evenly;
     padding: 10px;
     border-radius: 10px;
 }
@@ -86,6 +87,7 @@
     border: none;
     cursor: pointer;
     transition: background-color 0.2s;
+    width: 99px;
 }
 
 .container .buttons .edit:hover {
@@ -97,6 +99,7 @@
     color: var(--primary-color);
     border: none;
     cursor: not-allowed;
+    width: 99px;
 }
 
 .container .buttons .logout {
@@ -109,4 +112,27 @@
 
 .container .buttons .logout:hover {
     background-color: #b91c1c;
+}
+
+.delete {
+    position: absolute;
+    top: 88%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.delete button {
+    background-color: transparent;
+    color: #ef4444;
+    border: 2px solid #ef4444;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.delete button:hover {
+    background-color: #ef4444;
+    color: #ffffff;
 }
