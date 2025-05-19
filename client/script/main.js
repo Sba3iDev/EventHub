@@ -31,7 +31,8 @@ async function loadEvents() {
 function filterEvents(events, searchTerm, category) {
     return events.filter((event) => {
         const matchesSearch = event.title.toLowerCase().includes(searchTerm.toLowerCase());
-        const matchesCategory = category === "All" ? true : false || event.category === category;
+        // const matchesSearch = event.title.toLowerCase().slice(0, searchTerm.length) === searchTerm.toLowerCase();
+        const matchesCategory = category === "All categories" ? true : false || event.category === category;
         return matchesSearch && matchesCategory;
     });
 }
