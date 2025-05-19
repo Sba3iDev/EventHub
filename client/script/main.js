@@ -2,7 +2,6 @@ import { fetchEvents } from "./api.js";
 
 const eventTable = document.querySelector(".events-container table tbody");
 const searchInput = document.querySelector("#search");
-const filter = document.querySelector(".filter");
 const filterSelect = document.querySelector(".filter select");
 const events = await fetchEvents();
 
