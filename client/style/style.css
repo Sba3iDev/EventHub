@@ -98,48 +98,30 @@
     color: var(--secondary-color);
 }
 
-.events-container .filter input {
-    padding: 5px;
-    outline: none;
-    border-bottom: 1px solid transparent;
-    transition: border-bottom-color 0.2s ease;
-}
-
-.events-container .filter input:focus {
-    border-bottom: 1px solid #000000;
-}
-
-.events-container .filter .category-filter {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 100%;
-    left: 14%;
-    background-color: #efefef;
-    width: 86%;
-    border-radius: 10px;
-}
-
-.events-container .filter .category-filter span {
-    width: 100%;
-    padding: 10px;
+.events-container .filter select {
+    padding: 8px 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #64748b;
+    background-color: var(--background-color);
     cursor: pointer;
+    outline: none;
 }
 
-.events-container .filter .category-filter span:first-child {
-    border-radius: 10px 10px 0 0;
+.events-container .filter select:hover {
+    border-color: var(--secondary-color);
 }
 
-.events-container .filter .category-filter span:last-child {
-    border-radius: 0 0 10px 10px;
+.events-container .filter select:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
 }
 
-.events-container .filter .category-filter span:only-child {
-    border-radius: 10px;
-}
-
-.events-container .filter .category-filter span:hover {
-    background-color: #d8eaff;
+.events-container .filter select option {
+    padding: 8px;
+    background-color: var(--primary-color);
+    color: #1e293b;
 }
 
 table {
