@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+        <link rel="stylesheet" href="../style/normalize.css" />
+        <link rel="stylesheet" href="../style/admin.css" />
+        <title>Your events</title>
+    </head>
+    <body>
+        <div class="containers header-container">
+            <div class="title">
+                <i class="fas fa-calendar-day"></i>
+                <span>Events Hub</span>
+            </div>
+            <a class="account" href="page/profile.html">
+                <i class="fas fa-circle-user"></i>
+                <span></span>
+            </a>
+        </div>
+        <div class="containers events-container">
+            <div class="nav">
+                <span>Upcoming events</span>
+                <div class="search">
+                    <i class="fas fa-search"></i>
+                    <input type="search" name="search" id="search" placeholder="Search events by title..." />
+                </div>
+                <div class="filter">
+                    <i class="fas fa-filter"></i>
+                    <select name="filter-menu" id="filter-menu">
+                        <option value="All categories" selected>All categories</option>
+                        <option value="Club meetings">Club meetings</option>
+                        <option value="Workshops">Workshops</option>
+                        <option value="Sport matches">Sport matches</option>
+                        <option value="Study groups">Study groups</option>
+                    </select>
+                </div>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Category</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Location</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <!-- <script type="module" src="script/index.js"></script> -->
+    </body>
+</html>

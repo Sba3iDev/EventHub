@@ -20,6 +20,18 @@ async function loadUserData() {
     }
 }
 
+function createAdminButton() {
+    const adminDiv = document.createElement("div");
+    const adminButton = document.createElement("button");
+    adminButton.textContent = "Edit events";
+    adminDiv.classList.add("admin");
+    adminDiv.appendChild(adminButton);
+    document.body.appendChild(adminDiv);
+    adminButton.onclick = () => {
+        window.location.href = "../page/admin.html";
+    };
+}
+
 userName.addEventListener("input", (e) => {
     if (e.target.value != userData.username) {
         editButton.classList.remove("edit-disabled");
@@ -53,3 +65,7 @@ deleteAccountButton.onclick = async () => {
 };
 
 loadUserData();
+
+if (userRole.value.toLowerCase() == "admin") {
+    createAdminButton();
+}
