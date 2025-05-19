@@ -31,12 +31,11 @@ async function loadEvents() {
 function filterEvents(events, searchTerm, category) {
     return events.filter((event) => {
         const matchesSearch = event.title.toLowerCase().includes(searchTerm.toLowerCase());
-        const matchesCategory = category === "None" ? true : false || event.category === category;
+        const matchesCategory = category === "All" ? true : false || event.category === category;
         return matchesSearch && matchesCategory;
     });
 }
 
-// Update current search term and category when either changes
 let currentSearch = "";
 searchInput.addEventListener("input", (e) => {
     currentSearch = e.target.value;
