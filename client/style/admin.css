@@ -148,6 +148,11 @@ td:first-of-type {
     width: 400px;
 }
 
+th:last-of-type,
+td:last-of-type {
+    width: 200px;
+}
+
 th {
     background-color: var(--background-color);
     color: #64748b;
@@ -156,4 +161,46 @@ th {
 
 tr:hover {
     background-color: #d8eaff;
+}
+
+td:last-of-type {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+td:last-of-type button {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+td:last-of-type button i {
+    padding-right: 10px;
+}
+
+td:last-of-type .edit {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+td:last-of-type .edit:hover {
+    background-color: #1e40af;
+}
+
+td:last-of-type .delete {
+    background-color: #ef4444;
+    color: var(--primary-color);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+td:last-of-type .delete:hover {
+    background-color: #b91c1c;
 }
