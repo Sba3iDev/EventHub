@@ -13,12 +13,14 @@
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    width: 450px;
 }
 
 .container .title {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-bottom: 50px;
 }
 
 .container .title i {
@@ -29,4 +31,82 @@
 .container .title span {
     font-size: 30px;
     padding-top: 10px;
+}
+
+.container .data {
+    display: flex;
+    flex-direction: column;
+    font-size: larger;
+}
+
+.container .data div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+
+.container .data input {
+    background-color: var(--background-color);
+    border-radius: 20px;
+    border: 1px solid transparent;
+    padding: 10px 15px;
+}
+
+.container .data input:focus {
+    outline: none;
+    border-color: var(--secondary-color);
+}
+
+.container .data input:hover {
+    border-color: var(--secondary-color);
+}
+
+.container .buttons {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding-top: 50px;
+}
+
+.container .buttons button {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.container .buttons button i {
+    padding-right: 10px;
+}
+
+.container .buttons .edit {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.container .buttons .edit:hover {
+    background-color: #1e40af;
+}
+
+.container .buttons .edit-disabled {
+    background-color: #94a3b8;
+    color: var(--primary-color);
+    border: none;
+    cursor: not-allowed;
+}
+
+.container .buttons .logout {
+    background-color: #ef4444;
+    color: var(--primary-color);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.container .buttons .logout:hover {
+    background-color: #b91c1c;
 }
