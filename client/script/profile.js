@@ -1,10 +1,12 @@
-import { getUser } from "./api.js";
+import { getUser, updateUser } from "./api.js";
 
 const userNameTitle = document.querySelector(".title span");
 const userName = document.querySelector(".data .username input");
 const userEmail = document.querySelector(".data .email input");
 const userRole = document.querySelector(".data .role input");
-const userData = await getUser(1);
+const editButton = document.querySelector("#edit");
+let id = 1;
+const userData = await getUser(id);
 
 async function loadUserData() {
     try {
@@ -16,5 +18,33 @@ async function loadUserData() {
         console.error("Failed to load events:", error);
     }
 }
+
+userName.addEventListener("input", (e) => {
+    if (e.target.value != userData.username) {
+        editButton.classList.remove("edit-disabled");
+        editButton.classList.add("edit");
+        editButton.disabled = false;
+    } else {
+        editButton.classList.remove("edit");
+        editButton.classList.add("edit-disabled");
+        editButton.disabled = true;
+    }
+});
+
+userEmail.addEventListener("input", (e) => {
+    if (e.target.value != userData.email) {
+        editButton.classList.remove("edit-disabled");
+        editButton.classList.add("edit");
+        editButton.disabled = false;
+    } else {
+        editButton.classList.remove("edit");
+        editButton.classList.add("edit-disabled");
+        editButton.disabled = true;
+    }
+});
+
+editButton.onclick = async () => {
+    await updateUser(id, { username: userName.value, email: userEmail.value });
+};
 
 loadUserData();

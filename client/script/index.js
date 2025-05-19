@@ -4,7 +4,8 @@ const eventTable = document.querySelector(".events-container table tbody");
 const searchInput = document.querySelector("#search");
 const filterSelect = document.querySelector(".filter select");
 const userName = document.querySelector(".account span");
-const userData = await getUser(1);
+let id = 1;
+const userData = await getUser(id);
 const events = await fetchEvents();
 
 function renderEvents(events) {
