@@ -1,8 +1,10 @@
-import { fetchEvents } from "./api.js";
+import { fetchEvents, getUser } from "./api.js";
 
 const eventTable = document.querySelector(".events-container table tbody");
 const searchInput = document.querySelector("#search");
 const filterSelect = document.querySelector(".filter select");
+const userName = document.querySelector(".account span");
+const userData = await getUser(1);
 const events = await fetchEvents();
 
 function renderEvents(events) {
@@ -20,8 +22,9 @@ function renderEvents(events) {
         .join("");
 }
 
-async function loadEvents() {
+async function loadData() {
     try {
+        userName.innerHTML = userData.username;
         renderEvents(events);
     } catch (error) {
         console.error("Failed to load events:", error);
@@ -48,4 +51,4 @@ filterSelect.addEventListener("change", (e) => {
     renderEvents(filtered);
 });
 
-loadEvents();
+loadData();

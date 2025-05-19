@@ -20,7 +20,6 @@
 
 .header-container .title {
     color: var(--secondary-color);
-    cursor: pointer;
     font-size: 25px;
 }
 
