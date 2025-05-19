@@ -1,10 +1,11 @@
-import { getUser, updateUser } from "./api.js";
+import { getUser, updateUser, deleteUser } from "./api.js";
 
 const userNameTitle = document.querySelector(".title span");
 const userName = document.querySelector(".data .username input");
 const userEmail = document.querySelector(".data .email input");
 const userRole = document.querySelector(".data .role input");
 const editButton = document.querySelector("#edit");
+const deleteAccountButton = document.querySelector(".delete button");
 let id = 1;
 const userData = await getUser(id);
 
@@ -45,6 +46,10 @@ userEmail.addEventListener("input", (e) => {
 
 editButton.onclick = async () => {
     await updateUser(id, { username: userName.value, email: userEmail.value });
+};
+
+deleteAccountButton.onclick = async () => {
+    await deleteUser(id);
 };
 
 loadUserData();
