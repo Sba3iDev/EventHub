@@ -135,7 +135,7 @@ table {
 
 th,
 td {
-    padding: 20px 12px;
+    padding: 30.2px 12px;
     text-align: left;
     border-bottom: 1px solid #e2e8f0;
     white-space: normal;
@@ -152,6 +152,7 @@ th {
     background-color: var(--background-color);
     color: #64748b;
     font-weight: 600;
+    padding: 20px 12px;
 }
 
 tr:hover {

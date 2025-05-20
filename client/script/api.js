@@ -12,8 +12,12 @@ export async function fetchEvents() {
     return fetch(`${apiBase}events`).then(handleResponse);
 }
 
-export async function getEvent(id) {
+export async function getEventByUserId(id) {
     return fetch(`${apiBase}events/${id}`).then(handleResponse);
+}
+
+export async function getEventByEventId(id) {
+    return fetch(`${apiBase}events/event/${id}`).then(handleResponse);
 }
 
 export async function createEvent(eventData) {

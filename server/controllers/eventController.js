@@ -27,9 +27,21 @@ export const getAllEvents = (req, res) => {
     );
 };
 
-export const getEvent = (req, res) => {
+export const getEventByUserId = (req, res) => {
     db.all(
         `SELECT id, title, description, category, date, time, location, user_id, created_at FROM events WHERE user_id = ?`,
+        [req.params.id],
+        (err, row) => {
+            if (err) return res.status(400).send({ error: err.message });
+            if (!row) return res.status(404).send({ error: "Event not found" });
+            res.status(200).send(row);
+        }
+    );
+};
+
+export const getEventByEventId = (req, res) => {
+    db.get(
+        `SELECT id, title, description, category, date, time, location, user_id, created_at FROM events WHERE id = ?`,
         [req.params.id],
         (err, row) => {
             if (err) return res.status(400).send({ error: err.message });
