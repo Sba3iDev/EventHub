@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+        <link rel="stylesheet" href="../style/normalize.css" />
+        <link rel="stylesheet" href="../style/register.css" />
+        <title>Register - Events Hub</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="title">
+                <i class="fas fa-calendar-day"></i>
+                <span>Events Hub</span>
+            </div>
+            <form class="register-form">
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="username" placeholder="Username" required />
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="email" placeholder="Email" required />
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-user-tag"></i>
+                    <select id="role" required>
+                        <option value="" disabled selected>Select role</option>
+                        <option value="user">User</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" placeholder="Password" required />
+                </div>
+                <div class="error-message hide">Registration failed. Try again.</div>
+                <button type="submit">Register</button>
+                <div class="login-link">Already have an account? <a href="login.html">Login</a></div>
+            </form>
+        </div>
+        <script type="module" src="../script/register.js"></script>
+    </body>
+</html>

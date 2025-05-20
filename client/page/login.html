@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+        <link rel="stylesheet" href="../style/normalize.css" />
+        <link rel="stylesheet" href="../style/login.css" />
+        <title>Login - Events Hub</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="title">
+                <i class="fas fa-calendar-day"></i>
+                <span>Events Hub</span>
+            </div>
+            <form class="login-form">
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="email" placeholder="Email" required />
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" id="password" placeholder="Password" required />
+                </div>
+                <div class="error-message hide">Invalid email or password</div>
+                <button type="submit">Login</button>
+                <div class="register-link">Don't have an account? <a href="register.html">Register</a></div>
+            </form>
+        </div>
+        <script type="module" src="../script/login.js"></script>
+    </body>
+</html>
