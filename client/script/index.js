@@ -1,4 +1,4 @@
-import { fetchEvents, getUser } from "./api.js";
+import { fetchEvents, getUser, getEventByEventId } from "./api.js";
 
 const eventTable = document.querySelector(".events-container table tbody");
 const searchInput = document.querySelector("#search");
@@ -19,7 +19,7 @@ function renderEvents(events) {
         })
         .map(
             (event) => /*html*/ `
-        <tr>
+        <tr id="${event.id}">
             <td>${event.title}</td>
             <td>${event.category}</td>
             <td>${event.date}</td>
@@ -47,6 +47,44 @@ function filterEvents(events, searchTerm, category) {
     });
 }
 
+async function eventShowPopup(eventId) {
+    const overlay = document.createElement("div");
+    const popup = document.createElement("div");
+    const event = await getEventByEventId(eventId);
+    overlay.classList.add("popup-overlay");
+    document.body.appendChild(overlay);
+    popup.classList.add("popup");
+    popup.innerHTML = /*html*/ `
+        <span class="event-title">Event details</span>
+        <div class="data-inputs">
+            <span>Title</span>
+            <input type="text" name="title" id="title" value="${event.title}" readonly />
+            <span>Description</span>
+            <textarea name="description" id="description" readonly>${event.description}</textarea>
+            <span>Category</span>
+            <select name="category" id="category" disabled>
+                <option value="All categories" ${event.category === "All categories" ? "selected" : ""}>All categories</option>
+                <option value="Club meetings" ${event.category === "Club meetings" ? "selected" : ""}>Club meetings</option>
+                <option value="Workshops" ${event.category === "Workshops" ? "selected" : ""}>Workshops</option>
+                <option value="Sport matches" ${event.category === "Sport matches" ? "selected" : ""}>Sport matches</option>
+                <option value="Study groups" ${event.category === "Study groups" ? "selected" : ""}>Study groups</option>
+            </select>
+            <span>Date</span>
+            <input type="date" name="date" id="date" value="${event.date}" readonly>
+            <span>Time</span>
+            <input type="time" name="time" id="time" value="${event.time}" readonly>
+            <span>Location</span>
+            <input type="text" name="location" id="location" value="${event.location}" readonly>
+        </div>
+    `;
+    document.body.appendChild(popup);
+    overlay.addEventListener("click", () => {
+        popup.remove();
+        overlay.remove();
+    });
+    return popup;
+}
+
 let currentSearch = "";
 searchInput.addEventListener("input", (e) => {
     currentSearch = e.target.value;
@@ -60,3 +98,10 @@ filterSelect.addEventListener("change", (e) => {
 });
 
 loadData();
+
+const eventRows = document.querySelectorAll(".events-container table tbody tr");
+eventRows.forEach((event) => {
+    event.addEventListener("click", (e) => {
+        eventShowPopup(e.target.closest("tr").id);
+    });
+});

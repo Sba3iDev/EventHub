@@ -37,9 +37,9 @@ function renderEvents(events) {
 
 async function eventCreatePopup() {
     const overlay = document.createElement("div");
+    const popup = document.createElement("div");
     overlay.classList.add("popup-overlay");
     document.body.appendChild(overlay);
-    const popup = document.createElement("div");
     popup.classList.add("popup");
     popup.innerHTML = /*html*/ `
         <span class="event-title">Create event</span>
@@ -132,15 +132,19 @@ async function eventCreatePopup() {
         popup.remove();
         overlay.remove();
     });
+    overlay.addEventListener("click", () => {
+        popup.remove();
+        overlay.remove();
+    });
     return popup;
 }
 
 async function eventEditPopup(eventId) {
     const overlay = document.createElement("div");
-    overlay.classList.add("popup-overlay");
-    document.body.appendChild(overlay);
     const popup = document.createElement("div");
     const event = await getEventByEventId(eventId);
+    overlay.classList.add("popup-overlay");
+    document.body.appendChild(overlay);
     popup.classList.add("popup");
     popup.innerHTML = /*html*/ `
         <span class="event-title">Edit event</span>
@@ -148,7 +152,7 @@ async function eventEditPopup(eventId) {
             <span>Title *</span>
             <input type="text" name="title" id="title" value="${event.title}" />
             <span>Description</span>
-            <textarea name="description" id="description">${event.description || ""}</textarea>
+            <textarea name="description" id="description">${event.description}</textarea>
             <span>Category *</span>
             <select name="category" id="category">
                 <option value="All categories" ${event.category === "All categories" ? "selected" : ""}>All categories</option>
@@ -233,15 +237,19 @@ async function eventEditPopup(eventId) {
         popup.remove();
         overlay.remove();
     });
+    overlay.addEventListener("click", () => {
+        popup.remove();
+        overlay.remove();
+    });
     return popup;
 }
 
 async function eventDeletePopup(eventId) {
     const overlay = document.createElement("div");
-    overlay.classList.add("popup-overlay");
-    document.body.appendChild(overlay);
     const popup = document.createElement("div");
     const event = await getEventByEventId(eventId);
+    overlay.classList.add("popup-overlay");
+    document.body.appendChild(overlay);
     popup.classList.add("popup");
     popup.innerHTML = /*html*/ `
         <span class="event-title">Delete Event</span>
@@ -263,6 +271,10 @@ async function eventDeletePopup(eventId) {
         overlay.remove();
     });
     eventCancel.addEventListener("click", () => {
+        popup.remove();
+        overlay.remove();
+    });
+    overlay.addEventListener("click", () => {
         popup.remove();
         overlay.remove();
     });
