@@ -10,6 +10,13 @@ const events = await fetchEvents();
 
 function renderEvents(events) {
     eventTable.innerHTML = events
+        .sort((a, b) => {
+            let dateCompare = new Date(a.date) - new Date(b.date);
+            if (dateCompare === 0) {
+                return a.time.localeCompare(b.time);
+            }
+            return dateCompare;
+        })
         .map(
             (event) => /*html*/ `
         <tr>
