@@ -132,7 +132,7 @@
 
 .delete {
     position: absolute;
-    top: 88%;
+    top: 110%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
@@ -155,12 +155,9 @@
 
 .admin {
     position: absolute;
-    top: 12%;
+    top: 35%;
     left: 50%;
     transform: translate(-50%, -50%);
-}
-
-.admin button {
     background-color: var(--secondary-color);
     color: var(--primary-color);
     border: none;
@@ -173,7 +170,7 @@
     box-shadow: 0 2px 6px rgba(37, 99, 235, 0.08);
 }
 
-.admin button:hover {
+.admin:hover {
     background-color: #1e40af;
     color: #fff;
     box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);

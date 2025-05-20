@@ -1,5 +1,6 @@
 import { getUser, updateUser, deleteUser } from "./api.js";
 
+const profile = document.querySelector(".container");
 const userNameTitle = document.querySelector(".title span");
 const userName = document.querySelector(".data .username input");
 const userEmail = document.querySelector(".data .email input");
@@ -21,14 +22,12 @@ async function loadUserData() {
 }
 
 function createAdminButton() {
-    const adminDiv = document.createElement("div");
     const adminButton = document.createElement("button");
     adminButton.textContent = "Edit events";
-    adminDiv.classList.add("admin");
-    adminDiv.appendChild(adminButton);
-    document.body.appendChild(adminDiv);
+    adminButton.classList.add("admin");
+    profile.appendChild(adminButton);
     adminButton.onclick = () => {
-        window.location.href = "../page/admin.html";
+        window.location.href = "admin.html";
     };
 }
 
