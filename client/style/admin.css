@@ -128,6 +128,33 @@
     color: #1e293b;
 }
 
+.events-container .nav-create {
+    display: flex;
+    justify-content: end;
+    margin-bottom: 20px;
+}
+
+.events-container .nav-create .create {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.events-container .nav-create .create:hover {
+    background-color: #1e40af;
+}
+
+.events-container .nav-create .create i {
+    padding-right: 10px;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -203,4 +230,125 @@ td:last-of-type .delete {
 
 td:last-of-type .delete:hover {
     background-color: #b91c1c;
+}
+
+.popup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--primary-color);
+    padding: 32px 32px 24px 32px;
+    border-radius: 12px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.15);
+    width: 480px;
+    z-index: 1000;
+}
+
+.popup .event-title {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: var(--secondary-color);
+    margin-bottom: 18px;
+    text-align: center;
+}
+
+.popup .data-inputs {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+    margin-bottom: 22px;
+}
+
+.popup .data-inputs span {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #334155;
+    margin-bottom: 2px;
+}
+
+.popup .data-inputs input[type="text"],
+.popup .data-inputs input[type="date"],
+.popup .data-inputs input[type="time"],
+.popup .data-inputs textarea,
+.popup .data-inputs select {
+    width: 100%;
+    padding: 9px 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    background-color: var(--background-color);
+    font-size: 1rem;
+    color: #334155;
+    margin-bottom: 8px;
+    resize: none;
+    transition: border-color 0.2s;
+}
+
+.popup .data-inputs input[type="text"]:focus,
+.popup .data-inputs input[type="date"]:focus,
+.popup .data-inputs input[type="time"]:focus,
+.popup .data-inputs textarea:focus,
+.popup .data-inputs select:focus {
+    border-color: var(--secondary-color);
+    outline: none;
+}
+
+.popup .data-inputs input[type="text"]:hover,
+.popup .data-inputs input[type="date"]:hover,
+.popup .data-inputs input[type="time"]:hover,
+.popup .data-inputs textarea:hover,
+.popup .data-inputs select:hover {
+    border-color: var(--secondary-color);
+}
+
+.popup .data-inputs textarea {
+    min-height: 70px;
+    max-height: 160px;
+}
+
+.popup .data-inputs select {
+    cursor: pointer;
+}
+
+.popup .ok-cancel {
+    display: flex;
+    justify-content: flex-end;
+    gap: 14px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.popup .ok-cancel button {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 22px;
+    border-radius: 7px;
+    font-size: 1rem;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.popup .ok-cancel .ok {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+.popup .ok-cancel .ok:hover {
+    background-color: #1e40af;
+}
+
+.popup .ok-cancel .cancel {
+    background-color: #e2e8f0;
+    color: #334155;
+}
+
+.popup .ok-cancel .cancel:hover {
+    background-color: #cbd5e1;
 }
