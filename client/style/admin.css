@@ -130,7 +130,7 @@
 
 .events-container .nav-create {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     margin-bottom: 20px;
 }
 
@@ -312,6 +312,18 @@ td:last-of-type .delete:hover {
 
 .popup .data-inputs select {
     cursor: pointer;
+}
+
+.popup .show-error {
+    position: absolute;
+    top: 93%;
+    right: 56%;
+    color: #ef4444;
+    font-weight: bold;
+}
+
+.popup .hide-error {
+    display: none;
 }
 
 .popup .ok-cancel {
