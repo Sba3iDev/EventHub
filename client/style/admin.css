@@ -248,6 +248,17 @@ td:last-of-type .delete:hover {
     z-index: 1000;
 }
 
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 998;
+}
+
 .popup .event-title {
     font-size: 1.6rem;
     font-weight: bold;

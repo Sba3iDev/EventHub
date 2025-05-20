@@ -1,11 +1,10 @@
-import { getEventByUserId, getEventByEventId, getUser, createEvent, updateEvent } from "./api.js";
+import { getEventByUserId, getEventByEventId, getUser, createEvent, updateEvent, deleteEvent } from "./api.js";
 
 const eventTable = document.querySelector(".events-container table tbody");
 const searchInput = document.querySelector("#search");
 const filterSelect = document.querySelector(".filter select");
 const userName = document.querySelector(".account span");
 const createEventButton = document.querySelector(".create");
-const deleteEventButton = document.querySelectorAll(".delete");
 let id = 1;
 const userData = await getUser(id);
 const events = await getEventByUserId(id);
@@ -36,7 +35,10 @@ function renderEvents(events) {
         .join("");
 }
 
-function eventCreatePopup() {
+async function eventCreatePopup() {
+    const overlay = document.createElement("div");
+    overlay.classList.add("popup-overlay");
+    document.body.appendChild(overlay);
     const popup = document.createElement("div");
     popup.classList.add("popup");
     popup.innerHTML = /*html*/ `
@@ -105,6 +107,7 @@ function eventCreatePopup() {
                 user_id: id,
             });
             popup.remove();
+            overlay.remove();
         }
     });
     [eventTitle, eventDescription, eventCategory, eventDate, eventTime, eventLocation].forEach((input) => {
@@ -127,11 +130,15 @@ function eventCreatePopup() {
     });
     eventCancel.addEventListener("click", () => {
         popup.remove();
+        overlay.remove();
     });
     return popup;
 }
 
 async function eventEditPopup(eventId) {
+    const overlay = document.createElement("div");
+    overlay.classList.add("popup-overlay");
+    document.body.appendChild(overlay);
     const popup = document.createElement("div");
     const event = await getEventByEventId(eventId);
     popup.classList.add("popup");
@@ -201,6 +208,7 @@ async function eventEditPopup(eventId) {
                 user_id: id,
             });
             popup.remove();
+            overlay.remove();
         }
     });
     [eventTitle, eventDescription, eventCategory, eventDate, eventTime, eventLocation].forEach((input) => {
@@ -223,6 +231,40 @@ async function eventEditPopup(eventId) {
     });
     eventCancel.addEventListener("click", () => {
         popup.remove();
+        overlay.remove();
+    });
+    return popup;
+}
+
+async function eventDeletePopup(eventId) {
+    const overlay = document.createElement("div");
+    overlay.classList.add("popup-overlay");
+    document.body.appendChild(overlay);
+    const popup = document.createElement("div");
+    const event = await getEventByEventId(eventId);
+    popup.classList.add("popup");
+    popup.innerHTML = /*html*/ `
+        <span class="event-title">Delete Event</span>
+        <div class="delete-message">
+            Are you sure you want to delete the event <strong>"${event.title}"</strong> scheduled on <strong>${event.date}</strong> at <strong>${event.time}</strong>?
+            <br>This action cannot be undone.
+        </div>
+        <div class="ok-cancel">
+            <button class="ok"><i class="fas fa-check"></i>Delete</button>
+            <button class="cancel"><i class="fas fa-xmark"></i>Cancel</button>
+        </div>
+    `;
+    document.body.appendChild(popup);
+    const eventOk = popup.querySelector(".ok");
+    const eventCancel = popup.querySelector(".cancel");
+    eventOk.addEventListener("click", async () => {
+        await deleteEvent(eventId);
+        popup.remove();
+        overlay.remove();
+    });
+    eventCancel.addEventListener("click", () => {
+        popup.remove();
+        overlay.remove();
     });
     return popup;
 }
@@ -266,5 +308,12 @@ const editEventButtons = document.querySelectorAll(".edit");
 editEventButtons.forEach((editButton) => {
     editButton.addEventListener("click", (e) => {
         eventEditPopup(e.target.closest("button").id);
+    });
+});
+
+const deleteEventButton = document.querySelectorAll(".delete");
+deleteEventButton.forEach((deleteButton) => {
+    deleteButton.addEventListener("click", (e) => {
+        eventDeletePopup(e.target.closest("button").id);
     });
 });
