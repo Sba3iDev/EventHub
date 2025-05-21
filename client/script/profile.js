@@ -32,6 +32,11 @@ function createAdminButton() {
     };
 }
 
+function isValidEmail(email) {
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return emailRegex.test(email);
+}
+
 async function userEditPopup() {
     const overlay = document.createElement("div");
     const popup = document.createElement("div");
@@ -125,6 +130,32 @@ async function userDeletePopup() {
     return popup;
 }
 
+async function errorEditPopup() {
+    const overlay = document.createElement("div");
+    const popup = document.createElement("div");
+    overlay.classList.add("popup-overlay");
+    document.body.appendChild(overlay);
+    popup.classList.add("popup");
+    popup.innerHTML = /*html*/ `
+        <span class="event-title">Error</span>
+        <div>Please enter a valid email address</div>
+        <div class="ok-cancel">
+            <button class="cancel"><i class="fas fa-xmark"></i>Ok</button>
+        </div>
+    `;
+    document.body.appendChild(popup);
+    const eventCancel = popup.querySelector(".cancel");
+    eventCancel.addEventListener("click", () => {
+        popup.remove();
+        overlay.remove();
+    });
+    overlay.addEventListener("click", () => {
+        popup.remove();
+        overlay.remove();
+    });
+    return popup;
+}
+
 userName.addEventListener("input", (e) => {
     if (e.target.value != userData.username) {
         editButton.classList.remove("edit-disabled");
@@ -150,6 +181,10 @@ userEmail.addEventListener("input", (e) => {
 });
 
 editButton.onclick = () => {
+    if (!isValidEmail(userEmail.value)) {
+        errorEditPopup();
+        return;
+    }
     userEditPopup();
 };
 
