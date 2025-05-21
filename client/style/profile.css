@@ -119,7 +119,7 @@
 }
 
 .container .buttons .logout {
-    background-color: #ef4444;
+    background-color: #eb4a25;
     color: var(--primary-color);
     border: none;
     cursor: pointer;
@@ -139,8 +139,8 @@
 
 .delete button {
     background-color: transparent;
-    color: #ef4444;
-    border: 2px solid #ef4444;
+    color: #eb4a25;
+    border: 2px solid #eb4a25;
     cursor: pointer;
     transition: background-color 0.2s, color 0.2s;
     padding: 10px 20px;
@@ -149,7 +149,7 @@
 }
 
 .delete button:hover {
-    background-color: #ef4444;
+    background-color: #eb4a25;
     color: #ffffff;
 }
 

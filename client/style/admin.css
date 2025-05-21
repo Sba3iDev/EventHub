@@ -221,7 +221,7 @@ td:last-of-type .edit:hover {
 }
 
 td:last-of-type .delete {
-    background-color: #ef4444;
+    background-color: #eb4a25;
     color: var(--primary-color);
     border: none;
     cursor: pointer;
