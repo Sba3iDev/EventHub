@@ -5,7 +5,7 @@ const searchInput = document.querySelector("#search");
 const filterSelect = document.querySelector(".filter select");
 const userName = document.querySelector(".account span");
 const createEventButton = document.querySelector(".create");
-let id = 1;
+let id = localStorage.getItem("id");
 const userData = await getUser(id);
 const events = await getEventByUserId(id);
 

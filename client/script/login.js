@@ -13,6 +13,7 @@ loginForm.addEventListener("submit", async (e) => {
             password: passwordInput.value,
         });
         if (response.message === "Login successful") {
+            localStorage.setItem("id", response.id);
             window.location.href = "../index.html";
         }
     } catch (error) {

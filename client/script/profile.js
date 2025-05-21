@@ -7,7 +7,7 @@ const userEmail = document.querySelector(".data .email input");
 const userRole = document.querySelector(".data .role input");
 const editButton = document.querySelector("#edit");
 const deleteAccountButton = document.querySelector(".delete button");
-let id = 1;
+let id = localStorage.getItem("id");
 const userData = await getUser(id);
 
 async function loadUserData() {

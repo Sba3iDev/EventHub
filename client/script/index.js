@@ -1,24 +1,28 @@
 import { fetchEvents, getUser, getEventByEventId } from "./api.js";
 
-const eventTable = document.querySelector(".events-container table tbody");
-const searchInput = document.querySelector("#search");
-const filterSelect = document.querySelector(".filter select");
-const userName = document.querySelector(".account span");
-let id = 1;
-const userData = await getUser(id);
-const events = await fetchEvents();
+if (localStorage.getItem("id") == null) {
+    window.location.href = "/client/page/login.html";
+    console.log("gg");
+} else {
+    const eventTable = document.querySelector(".events-container table tbody");
+    const searchInput = document.querySelector("#search");
+    const filterSelect = document.querySelector(".filter select");
+    const userName = document.querySelector(".account span");
+    let id = localStorage.getItem("id");
+    const userData = await getUser(id);
+    const events = await fetchEvents();
 
-function renderEvents(events) {
-    eventTable.innerHTML = events
-        .sort((a, b) => {
-            let dateCompare = new Date(a.date) - new Date(b.date);
-            if (dateCompare === 0) {
-                return a.time.localeCompare(b.time);
-            }
-            return dateCompare;
-        })
-        .map(
-            (event) => /*html*/ `
+    function renderEvents(events) {
+        eventTable.innerHTML = events
+            .sort((a, b) => {
+                let dateCompare = new Date(a.date) - new Date(b.date);
+                if (dateCompare === 0) {
+                    return a.time.localeCompare(b.time);
+                }
+                return dateCompare;
+            })
+            .map(
+                (event) => /*html*/ `
         <tr id="${event.id}">
             <td>${event.title}</td>
             <td>${event.category}</td>
@@ -26,35 +30,35 @@ function renderEvents(events) {
             <td>${event.time}</td>
             <td>${event.location}</td>
         </tr>`
-        )
-        .join("");
-}
-
-async function loadData() {
-    try {
-        userName.innerHTML = userData.username;
-        renderEvents(events);
-    } catch (error) {
-        console.error("Failed to load events:", error);
+            )
+            .join("");
     }
-}
 
-function filterEvents(events, searchTerm, category) {
-    return events.filter((event) => {
-        const matchesSearch = event.title.toLowerCase().includes(searchTerm.toLowerCase());
-        const matchesCategory = category === "All categories" ? true : false || event.category === category;
-        return matchesSearch && matchesCategory;
-    });
-}
+    async function loadData() {
+        try {
+            userName.innerHTML = userData.username;
+            renderEvents(events);
+        } catch (error) {
+            console.error("Failed to load events:", error);
+        }
+    }
 
-async function eventShowPopup(eventId) {
-    const overlay = document.createElement("div");
-    const popup = document.createElement("div");
-    const event = await getEventByEventId(eventId);
-    overlay.classList.add("popup-overlay");
-    document.body.appendChild(overlay);
-    popup.classList.add("popup");
-    popup.innerHTML = /*html*/ `
+    function filterEvents(events, searchTerm, category) {
+        return events.filter((event) => {
+            const matchesSearch = event.title.toLowerCase().includes(searchTerm.toLowerCase());
+            const matchesCategory = category === "All categories" ? true : false || event.category === category;
+            return matchesSearch && matchesCategory;
+        });
+    }
+
+    async function eventShowPopup(eventId) {
+        const overlay = document.createElement("div");
+        const popup = document.createElement("div");
+        const event = await getEventByEventId(eventId);
+        overlay.classList.add("popup-overlay");
+        document.body.appendChild(overlay);
+        popup.classList.add("popup");
+        popup.innerHTML = /*html*/ `
         <span class="event-title">Event details</span>
         <div class="data-inputs">
             <span>Title</span>
@@ -71,43 +75,44 @@ async function eventShowPopup(eventId) {
             <input type="text" name="location" id="location" value="${event.location}" readonly>
         </div>
     `;
-    document.body.appendChild(popup);
-    overlay.addEventListener("click", () => {
-        popup.remove();
-        overlay.remove();
+        document.body.appendChild(popup);
+        overlay.addEventListener("click", () => {
+            popup.remove();
+            overlay.remove();
+        });
+        return popup;
+    }
+
+    let currentSearch = "";
+    searchInput.addEventListener("input", (e) => {
+        currentSearch = e.target.value;
+        const filtered = filterEvents(events, currentSearch, filterSelect.value);
+        renderEvents(filtered);
+        const eventRows = document.querySelectorAll(".events-container table tbody tr");
+        eventRows.forEach((event) => {
+            event.addEventListener("click", (e) => {
+                eventShowPopup(e.target.closest("tr").id);
+            });
+        });
     });
-    return popup;
+
+    filterSelect.addEventListener("change", (e) => {
+        const filtered = filterEvents(events, currentSearch, e.target.value);
+        renderEvents(filtered);
+        const eventRows = document.querySelectorAll(".events-container table tbody tr");
+        eventRows.forEach((event) => {
+            event.addEventListener("click", (e) => {
+                eventShowPopup(e.target.closest("tr").id);
+            });
+        });
+    });
+
+    loadData();
+
+    const eventRows = document.querySelectorAll(".events-container table tbody tr");
+    eventRows.forEach((event) => {
+        event.addEventListener("click", (e) => {
+            eventShowPopup(e.target.closest("tr").id);
+        });
+    });
 }
-
-let currentSearch = "";
-searchInput.addEventListener("input", (e) => {
-    currentSearch = e.target.value;
-    const filtered = filterEvents(events, currentSearch, filterSelect.value);
-    renderEvents(filtered);
-    const eventRows = document.querySelectorAll(".events-container table tbody tr");
-    eventRows.forEach((event) => {
-        event.addEventListener("click", (e) => {
-            eventShowPopup(e.target.closest("tr").id);
-        });
-    });
-});
-
-filterSelect.addEventListener("change", (e) => {
-    const filtered = filterEvents(events, currentSearch, e.target.value);
-    renderEvents(filtered);
-    const eventRows = document.querySelectorAll(".events-container table tbody tr");
-    eventRows.forEach((event) => {
-        event.addEventListener("click", (e) => {
-            eventShowPopup(e.target.closest("tr").id);
-        });
-    });
-});
-
-loadData();
-
-const eventRows = document.querySelectorAll(".events-container table tbody tr");
-eventRows.forEach((event) => {
-    event.addEventListener("click", (e) => {
-        eventShowPopup(e.target.closest("tr").id);
-    });
-});

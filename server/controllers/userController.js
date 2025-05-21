@@ -10,7 +10,10 @@ export const registerUser = async (req, res) => {
             [username, email, role, hashedPassword],
             (err) => {
                 if (err) return res.status(400).send({ error: err.message });
-                res.status(201).send({ message: "User created successfully" });
+                db.get(`SELECT id FROM users WHERE email = ?`, [email], (err, row) => {
+                    if (err) return res.status(400).send({ error: err.message });
+                    res.status(201).send({ id: row.id, message: "User created successfully" });
+                });
             }
         );
     } catch (err) {
@@ -26,7 +29,10 @@ export const loginUser = async (req, res) => {
             if (!row) return res.status(404).send({ error: "User not found" });
             const match = await bcrypt.compare(password, row.password);
             if (!match) return res.status(401).send({ error: "Invalid password" });
-            res.status(200).send({ message: "Login successful" });
+            db.get(`SELECT id FROM users WHERE email = ?`, [email], (err, row) => {
+                if (err) return res.status(400).send({ error: err.message });
+                res.status(200).send({ id: row.id, message: "Login successful" });
+            });
         });
     } catch (err) {
         res.status(500).send({ error: err.message });
