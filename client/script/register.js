@@ -28,7 +28,7 @@ registerForm.addEventListener("submit", async (e) => {
         });
         if (response.message === "User created successfully") {
             localStorage.setItem("id", response.id);
-            window.location.href = "../index.html";
+            window.location.href = "../page/dashboard.html";
         }
     } catch (error) {
         errorMessage.textContent = "Email is already in use. Please use a different email.";

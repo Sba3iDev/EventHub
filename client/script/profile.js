@@ -1,5 +1,9 @@
 import { getUser, updateUser, deleteUser } from "./api.js";
 
+if (localStorage.getItem("id") == null) {
+    window.location.href = "/client/index.html";
+}
+
 const profile = document.querySelector(".container");
 const userNameTitle = document.querySelector(".title span");
 const userName = document.querySelector(".data .username input");
@@ -46,7 +50,7 @@ async function userEditPopup() {
     popup.innerHTML = /*html*/ `
         <span class="event-title">Edit profile</span>
         <div class="ok-cancel">
-            <button class="ok"><i class="fas fa-check"></i>Edit</button>
+            <button class="ok"><i class="fas fa-check"></i>Ok</button>
             <button class="cancel"><i class="fas fa-xmark"></i>Cancel</button>
         </div>
     `;
@@ -76,7 +80,7 @@ function userLogoutPopup() {
     popup.innerHTML = /*html*/ `
         <span class="event-title">Logout</span>
         <div class="ok-cancel">
-            <button class="ok"><i class="fas fa-check"></i>Logout</button>
+            <button class="ok"><i class="fas fa-check"></i>Ok</button>
             <button class="cancel"><i class="fas fa-xmark"></i>Cancel</button>
         </div>
     `;
@@ -107,7 +111,7 @@ async function userDeletePopup() {
     popup.innerHTML = /*html*/ `
         <span class="event-title">Delete account</span>
         <div class="ok-cancel">
-            <button class="ok"><i class="fas fa-check"></i>Delete</button>
+            <button class="ok"><i class="fas fa-check"></i>Ok</button>
             <button class="cancel"><i class="fas fa-xmark"></i>Cancel</button>
         </div>
     `;

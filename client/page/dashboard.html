@@ -5,8 +5,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
         <link rel="stylesheet" href="../style/normalize.css" />
-        <link rel="stylesheet" href="../style/admin.css" />
-        <title>Your events</title>
+        <link rel="stylesheet" href="../style/dashboard.css" />
+        <title>Events Hub</title>
     </head>
     <body>
         <div class="containers header-container">
@@ -20,11 +20,8 @@
             </a>
         </div>
         <div class="containers events-container">
-            <div class="nav-create">
-                <button class="create"><i class="fas fa-plus"></i>Create</button>
-            </div>
             <div class="nav">
-                <span>Your events</span>
+                <span>Upcoming events</span>
                 <div class="search">
                     <i class="fas fa-search"></i>
                     <input type="search" name="search" id="search" placeholder="Search events by title..." />
@@ -48,12 +45,11 @@
                         <th>Date</th>
                         <th>Time</th>
                         <th>Location</th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody></tbody>
             </table>
         </div>
-        <script type="module" src="../script/admin.js"></script>
+        <script type="module" src="../script/dashboard.js"></script>
     </body>
 </html>

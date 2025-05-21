@@ -1,5 +1,9 @@
 import { getEventByUserId, getEventByEventId, getUser, createEvent, updateEvent, deleteEvent } from "./api.js";
 
+if (localStorage.getItem("id") == null) {
+    window.location.href = "/client/index.html";
+}
+
 const eventTable = document.querySelector(".events-container table tbody");
 const searchInput = document.querySelector("#search");
 const filterSelect = document.querySelector(".filter select");

@@ -14,7 +14,7 @@ loginForm.addEventListener("submit", async (e) => {
         });
         if (response.message === "Login successful") {
             localStorage.setItem("id", response.id);
-            window.location.href = "../index.html";
+            window.location.href = "../page/dashboard.html";
         }
     } catch (error) {
         errorMessage.classList.remove("hide");
