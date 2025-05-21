@@ -213,7 +213,7 @@
 
 .popup .ok-cancel {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     gap: 14px;
     width: 100%;
     margin-top: 10px;
@@ -233,8 +233,11 @@
 }
 
 .popup .ok-cancel .ok {
+    display: flex;
+    justify-content: center;
     background-color: var(--secondary-color);
     color: var(--primary-color);
+    width: 111.8px;
 }
 
 .popup .ok-cancel .ok:hover {
