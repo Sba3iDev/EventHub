@@ -4,12 +4,12 @@ if (localStorage.getItem("id") == null) {
     window.location.href = "/client/index.html";
 }
 
+let id = localStorage.getItem("id");
 const eventTable = document.querySelector(".events-container table tbody");
 const searchInput = document.querySelector("#search");
 const filterSelect = document.querySelector(".filter select");
 const userName = document.querySelector(".account span");
 const createEventButton = document.querySelector(".create");
-let id = localStorage.getItem("id");
 const userData = await getUser(id);
 const events = await getEventByUserId(id);
 

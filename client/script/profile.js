@@ -4,6 +4,7 @@ if (localStorage.getItem("id") == null) {
     window.location.href = "/client/index.html";
 }
 
+let id = localStorage.getItem("id");
 const profile = document.querySelector(".container");
 const userNameTitle = document.querySelector(".title span");
 const userName = document.querySelector(".data .username input");
@@ -12,7 +13,6 @@ const userRole = document.querySelector(".data .role input");
 const editButton = document.querySelector("#edit");
 const logoutButton = document.querySelector(".logout");
 const deleteAccountButton = document.querySelector(".delete button");
-let id = localStorage.getItem("id");
 const userData = await getUser(id);
 
 async function loadUserData() {
