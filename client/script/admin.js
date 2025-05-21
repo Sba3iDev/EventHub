@@ -251,7 +251,7 @@ async function eventDeletePopup(eventId) {
     document.body.appendChild(overlay);
     popup.classList.add("popup");
     popup.innerHTML = /*html*/ `
-        <span class="event-title">Delete Event</span>
+        <span class="event-title">Delete event</span>
         <div class="delete-message">
             Are you sure you want to delete the event <strong>"${event.title}"</strong> scheduled on <strong>${event.date}</strong> at <strong>${event.time}</strong>?
             <br>This action cannot be undone.

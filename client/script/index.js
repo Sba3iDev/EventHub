@@ -2,7 +2,6 @@ import { fetchEvents, getUser, getEventByEventId } from "./api.js";
 
 if (localStorage.getItem("id") == null) {
     window.location.href = "/client/page/login.html";
-    console.log("gg");
 } else {
     const eventTable = document.querySelector(".events-container table tbody");
     const searchInput = document.querySelector("#search");
