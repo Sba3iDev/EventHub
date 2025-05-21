@@ -50,7 +50,7 @@ async function eventCreatePopup() {
             <textarea name="description" id="description"></textarea>
             <span>Category *</span>
             <select name="category" id="category">
-                <option value="All categories" selected>All categories</option>
+                <option value="Categories" selected disabled>Categories</option>
                 <option value="Club meetings">Club meetings</option>
                 <option value="Workshops">Workshops</option>
                 <option value="Sport matches">Sport matches</option>
@@ -82,7 +82,7 @@ async function eventCreatePopup() {
         const errorDiv = popup.querySelector(".hide-error");
         if (
             eventTitle.value.trim() === "" ||
-            eventCategory.value === "All categories" ||
+            eventCategory.value === "Categories" ||
             eventDate.value.trim() === "" ||
             eventTime.value.trim() === "" ||
             eventLocation.value.trim() === ""
@@ -155,7 +155,7 @@ async function eventEditPopup(eventId) {
             <textarea name="description" id="description">${event.description}</textarea>
             <span>Category *</span>
             <select name="category" id="category">
-                <option value="All categories" ${event.category === "All categories" ? "selected" : ""}>All categories</option>
+                <option value="Categories" disabled>Categories</option>
                 <option value="Club meetings" ${event.category === "Club meetings" ? "selected" : ""}>Club meetings</option>
                 <option value="Workshops" ${event.category === "Workshops" ? "selected" : ""}>Workshops</option>
                 <option value="Sport matches" ${event.category === "Sport matches" ? "selected" : ""}>Sport matches</option>
@@ -187,7 +187,6 @@ async function eventEditPopup(eventId) {
         const errorDiv = popup.querySelector(".hide-error");
         if (
             eventTitle.value.trim() === "" ||
-            eventCategory.value === "All categories" ||
             eventDate.value.trim() === "" ||
             eventTime.value.trim() === "" ||
             eventLocation.value.trim() === ""

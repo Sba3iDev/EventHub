@@ -62,13 +62,7 @@ async function eventShowPopup(eventId) {
             <span>Description</span>
             <textarea name="description" id="description" readonly>${event.description}</textarea>
             <span>Category</span>
-            <select name="category" id="category" disabled>
-                <option value="All categories" ${event.category === "All categories" ? "selected" : ""}>All categories</option>
-                <option value="Club meetings" ${event.category === "Club meetings" ? "selected" : ""}>Club meetings</option>
-                <option value="Workshops" ${event.category === "Workshops" ? "selected" : ""}>Workshops</option>
-                <option value="Sport matches" ${event.category === "Sport matches" ? "selected" : ""}>Sport matches</option>
-                <option value="Study groups" ${event.category === "Study groups" ? "selected" : ""}>Study groups</option>
-            </select>
+            <input type="text" name="category" id="category" value="${event.category}" disabled>
             <span>Date</span>
             <input type="date" name="date" id="date" value="${event.date}" readonly>
             <span>Time</span>
