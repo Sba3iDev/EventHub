@@ -302,11 +302,35 @@ searchInput.addEventListener("input", (e) => {
     currentSearch = e.target.value;
     const filtered = filterEvents(events, currentSearch, filterSelect.value);
     renderEvents(filtered);
+    const editEventButtons = document.querySelectorAll(".edit");
+    editEventButtons.forEach((editButton) => {
+        editButton.addEventListener("click", (e) => {
+            eventEditPopup(e.target.closest("button").id);
+        });
+    });
+    const deleteEventButton = document.querySelectorAll(".delete");
+    deleteEventButton.forEach((deleteButton) => {
+        deleteButton.addEventListener("click", (e) => {
+            eventDeletePopup(e.target.closest("button").id);
+        });
+    });
 });
 
 filterSelect.addEventListener("change", (e) => {
     const filtered = filterEvents(events, currentSearch, e.target.value);
     renderEvents(filtered);
+    const editEventButtons = document.querySelectorAll(".edit");
+    editEventButtons.forEach((editButton) => {
+        editButton.addEventListener("click", (e) => {
+            eventEditPopup(e.target.closest("button").id);
+        });
+    });
+    const deleteEventButton = document.querySelectorAll(".delete");
+    deleteEventButton.forEach((deleteButton) => {
+        deleteButton.addEventListener("click", (e) => {
+            eventDeletePopup(e.target.closest("button").id);
+        });
+    });
 });
 
 createEventButton.addEventListener("click", () => {

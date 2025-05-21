@@ -84,11 +84,23 @@ searchInput.addEventListener("input", (e) => {
     currentSearch = e.target.value;
     const filtered = filterEvents(events, currentSearch, filterSelect.value);
     renderEvents(filtered);
+    const eventRows = document.querySelectorAll(".events-container table tbody tr");
+    eventRows.forEach((event) => {
+        event.addEventListener("click", (e) => {
+            eventShowPopup(e.target.closest("tr").id);
+        });
+    });
 });
 
 filterSelect.addEventListener("change", (e) => {
     const filtered = filterEvents(events, currentSearch, e.target.value);
     renderEvents(filtered);
+    const eventRows = document.querySelectorAll(".events-container table tbody tr");
+    eventRows.forEach((event) => {
+        event.addEventListener("click", (e) => {
+            eventShowPopup(e.target.closest("tr").id);
+        });
+    });
 });
 
 loadData();
