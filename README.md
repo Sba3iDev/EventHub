@@ -9,13 +9,12 @@ Events Hub is a web application for managing and viewing events. It features use
 -   Search and filter events
 -   Create, edit, and delete events (admin)
 -   User profile management
--   Responsive design
 
 ## Prerequisites
 
 -   Node.js (v14 or higher)
 -   SQLite3
--   Modern web browser
+-   Web browser
 
 ## Installation
 
@@ -23,7 +22,7 @@ Events Hub is a web application for managing and viewing events. It features use
 
 ```bash
 git clone <repository-url>
-cd WebProject
+cd EventHub
 ```
 
 2. Install server dependencies:
@@ -97,7 +96,7 @@ The server will run on http://localhost:3000
 ## File Structure
 
 ```
-WebProject/
+EventHub/
 ├── server/
 │   ├── controllers/
 │   ├── routes/
@@ -105,6 +104,7 @@ WebProject/
 │   ├── middleware/
 │   └── server.js
 ├── client/
+|   ├── icon/
 │   ├── page/
 │   ├── script/
 │   ├── style/
@@ -112,18 +112,56 @@ WebProject/
 └── README.md
 ```
 
+## Features in Detail
+
+### Authentication
+
+-   User registration with email validation
+-   Secure password hashing with bcrypt
+-   Role selection (user/admin)
+-   Session management with localStorage
+
+### Event Management
+
+-   View all upcoming events
+-   Search events by title
+-   Filter events by category
+-   Admin panel for event CRUD operations
+-   Event details popup
+
+### User Profile
+
+-   View and edit profile information
+-   Change username/email
+-   Account deletion
+-   Admin access to event management
+
 ## Security Features
 
--   Password hashing using bcrypt
--   Input validation
--   Error handling
--   SQLite database security
+-   Password hashing with bcrypt
+-   Input validation and sanitization
+-   Error handling middleware
+-   Secure database operations
+
+## Tech Stack
+
+-   Frontend:
+    -   Vanilla JavaScript
+    -   CSS3 with CSS Variables
+    -   HTML5
+    -   Font Awesome icons
+-   Backend:
+    -   Node.js
+    -   Express.js
+    -   SQLite3
+    -   bcrypt for password hashing
 
 ## Error Handling
 
-The application includes error handling for:
+Comprehensive error handling for:
 
--   Invalid login credentials
+-   Invalid credentials
 -   Duplicate email registration
--   Invalid input data
+-   Missing required fields
+-   Database operations
 -   Server errors

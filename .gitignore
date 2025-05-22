@@ -1,9 +1,6 @@
 # Dependencies
 node_modules/
 
-# Docs
-doc/
-
 # Environment variables
 .env
 
