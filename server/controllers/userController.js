@@ -69,6 +69,9 @@ export const deleteUser = (req, res) => {
     db.run(`DELETE FROM users WHERE id = ?`, [userId], function (err) {
         if (err) return res.status(500).send({ error: err.message });
         if (this.changes === 0) return res.status(404).send({ error: "User not found" });
-        res.status(200).send({ message: "User deleted successfully" });
+        db.run(`DELETE FROM events WHERE user_id = ?`, [userId], function (err) {
+            if (err) return res.status(500).send({ error: err.message });
+            res.status(200).send({ message: "User deleted successfully" });
+        });
     });
 };

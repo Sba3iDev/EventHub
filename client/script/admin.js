@@ -39,6 +39,14 @@ function renderEvents(events) {
         .join("");
 }
 
+function toTitleCase(str) {
+    return str
+        .toLowerCase()
+        .split(" ")
+        .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(" ");
+}
+
 async function eventCreatePopup() {
     const overlay = document.createElement("div");
     const popup = document.createElement("div");
@@ -102,7 +110,7 @@ async function eventCreatePopup() {
                 errorDiv.classList.remove("show-error");
             }
             await createEvent({
-                title: eventTitle.value,
+                title: toTitleCase(eventTitle.value),
                 description: eventDescription.value,
                 category: eventCategory.value,
                 date: eventDate.value,
@@ -206,7 +214,7 @@ async function eventEditPopup(eventId) {
                 errorDiv.classList.remove("show-error");
             }
             await updateEvent(eventId, {
-                title: eventTitle.value,
+                title: toTitleCase(eventTitle.value),
                 description: eventDescription.value,
                 category: eventCategory.value,
                 date: eventDate.value,
