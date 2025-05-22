@@ -127,7 +127,3 @@ The application includes error handling for:
 -   Duplicate email registration
 -   Invalid input data
 -   Server errors
-
-## License
-
-This project is licensed under the ISC License.
