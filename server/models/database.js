@@ -1,4 +1,11 @@
 import sqlite from "sqlite3";
+import fs from "fs";
+
+fs.mkdir("./database/", (err) => {
+    if (err) {
+        return console.error("Error creating folder:", err);
+    }
+});
 
 const db = new sqlite.Database("./database/database.db", (err) => {
     if (err) {
