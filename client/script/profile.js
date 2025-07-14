@@ -160,8 +160,8 @@ async function errorEditPopup() {
     return popup;
 }
 
-userName.addEventListener("input", (e) => {
-    if (e.target.value != userData.username) {
+function updateEditButton() {
+    if (userName.value !== userData.username || userEmail.value !== userData.email) {
         editButton.classList.remove("edit-disabled");
         editButton.classList.add("edit");
         editButton.disabled = false;
@@ -170,19 +170,10 @@ userName.addEventListener("input", (e) => {
         editButton.classList.add("edit-disabled");
         editButton.disabled = true;
     }
-});
+}
 
-userEmail.addEventListener("input", (e) => {
-    if (e.target.value != userData.email) {
-        editButton.classList.remove("edit-disabled");
-        editButton.classList.add("edit");
-        editButton.disabled = false;
-    } else {
-        editButton.classList.remove("edit");
-        editButton.classList.add("edit-disabled");
-        editButton.disabled = true;
-    }
-});
+userName.addEventListener("input", updateEditButton);
+userEmail.addEventListener("input", updateEditButton);
 
 editButton.onclick = () => {
     if (!isValidEmail(userEmail.value)) {
