@@ -1,22 +1,22 @@
 # Events Hub
 
-Events Hub is a web application for managing and viewing events. It features user authentication, event management, and different roles (user/admin).
+**Events Hub** is a full-stack web application for managing and viewing events. It features user authentication, event CRUD operations, and role-based access control (user/admin).
 
-## Features
+## 🚀 Features
 
 -   User authentication (register/login)
--   View all upcoming events
+-   View upcoming events
 -   Search and filter events
--   Create, edit, and delete events (admin)
+-   Create, edit, and delete events (admin only)
 -   User profile management
 
-## Prerequisites
+## 📦 Prerequisites
 
 -   Node.js (v14 or higher)
 -   SQLite3
--   Web browser
+-   Modern web browser
 
-## Installation
+## ⚙️ Installation
 
 1. Clone the repository:
 
@@ -32,68 +32,74 @@ cd server
 npm install
 ```
 
-## Database Setup
+## 🗓️ Database Setup
 
-The database will be automatically created when you start the server for the first time. It includes:
+The database initializes automatically on first server run and includes:
 
--   Users table (for authentication and user management)
--   Events table (for storing event information)
+-   Users Table – handles user accounts and roles
+-   Events Table – stores all event information
 
-## Running the Application
+## 🖥️ Running the Application
 
-1. Start the server:
+1. Start the backend server:
 
 ```bash
 cd server
 npm start
 ```
 
-The server will run on http://localhost:3000
+The server runs on: [http://localhost:3000](http://localhost:3000)
 
-2. Access the web application:
-   Open the client/index.html file in your web browser or serve it using a local development server.
+2. Open the frontend:
 
-## Usage
+-   Option 1: Open `client/index.html` directly in your browser
+-   Option 2: Serve it via a local web server (e.g., Live Server in VSCode)
 
-### User Registration
+## 👥 User Guide
 
-1. Click "Register" on the login page
-2. Fill in your details:
+### Register
+
+1. Click **Register** on the login screen
+2. Fill in the form:
+
     - Username
     - Email
-    - Role (user/admin)
     - Password
-3. Submit the registration form
+    - Select role (user/admin)
 
-### Logging In
+3. Submit to create your account
+
+### Login
 
 1. Enter your email and password
-2. Click "Login"
+2. Click **Login**
 
 ### Viewing Events
 
--   All events are displayed on the dashboard
--   Use the search bar to find events by title
--   Use the filter dropdown to view events by category
+-   All events are listed on the dashboard
+-   Use the **search bar** to find events by title
+-   Use the **filter** to sort by category
 
-### Managing Events (Admin Only)
+### Admin Event Management
 
-1. Go to your profile page
-2. Click "Edit events" button
-3. In the admin panel you can:
-    - Create new events
-    - Edit existing events
+1. Navigate to your **Profile Page**
+2. Click **Edit Events**
+3. In the admin panel, you can:
+
+    - Create events
+    - Edit events
     - Delete events
 
 ### Profile Management
 
-1. Click on your username in the top right
-2. In the profile page you can:
-    - Edit your username/email
+1. Click your **username** (top-right)
+2. On the Profile Page, you can:
+
+    - Update username/email
     - Delete your account
     - Log out
 
-## File Structure
+## 📁 Project Structure
 
 ```
 EventHub/
@@ -104,7 +110,7 @@ EventHub/
 │   ├── middleware/
 │   └── server.js
 ├── client/
-|   ├── icon/
+│   ├── icon/
 │   ├── page/
 │   ├── script/
 │   ├── style/
@@ -112,56 +118,57 @@ EventHub/
 └── README.md
 ```
 
-## Features in Detail
+## 🔍 Feature Details
 
 ### Authentication
 
--   User registration with email validation
--   Secure password hashing with bcrypt
--   Role selection (user/admin)
--   Session management with localStorage
+-   Email validation on registration
+-   Passwords hashed with bcrypt
+-   Role-based access (user vs. admin)
+-   Session stored with `localStorage`
 
 ### Event Management
 
--   View all upcoming events
+-   Full CRUD support (admin only)
 -   Search events by title
--   Filter events by category
--   Admin panel for event CRUD operations
--   Event details popup
+-   Filter by category
+-   Popup for event details
 
 ### User Profile
 
--   View and edit profile information
--   Change username/email
+-   Update personal information
 -   Account deletion
--   Admin access to event management
+-   Admin access to event tools
 
-## Security Features
+## 🔐 Security
 
--   Password hashing with bcrypt
+-   Password hashing with `bcrypt`
 -   Input validation and sanitization
--   Error handling middleware
--   Secure database operations
+-   Centralized error handling middleware
+-   Secure DB operations using parameterized queries
 
-## Tech Stack
+## 💪 Tech Stack
 
--   Frontend:
-    -   Vanilla JavaScript
-    -   CSS3 with CSS Variables
-    -   HTML5
-    -   Font Awesome icons
--   Backend:
-    -   Node.js
-    -   Express.js
-    -   SQLite3
-    -   bcrypt for password hashing
+**Frontend:**
 
-## Error Handling
+-   HTML5
+-   CSS3 (with CSS variables)
+-   Vanilla JavaScript
+-   Font Awesome
 
-Comprehensive error handling for:
+**Backend:**
 
--   Invalid credentials
+-   Node.js
+-   Express.js
+-   SQLite3
+-   bcrypt
+
+## ⚠️ Error Handling
+
+Handles various scenarios:
+
+-   Invalid login credentials
 -   Duplicate email registration
--   Missing required fields
--   Database operations
--   Server errors
+-   Missing or invalid form fields
+-   Database read/write failures
+-   General server errors
