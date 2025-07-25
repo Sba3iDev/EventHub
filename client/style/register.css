@@ -53,6 +53,11 @@
     color: #64748b;
 }
 
+.input-group select {
+    appearance: none;
+    cursor: pointer;
+}
+
 .input-group input,
 .input-group select {
     width: 100%;
@@ -62,18 +67,11 @@
     background-color: var(--background-color);
     font-size: 1rem;
 }
-
-.input-group select {
-    appearance: none;
-    cursor: pointer;
-}
-
 .input-group input:focus,
 .input-group select:focus {
     outline: none;
     border-color: var(--secondary-color);
 }
-
 .input-group input:hover,
 .input-group select:hover {
     border-color: var(--secondary-color);
@@ -89,7 +87,6 @@ button {
     cursor: pointer;
     transition: background-color 0.2s;
 }
-
 button:hover {
     background-color: #1e40af;
 }
@@ -115,7 +112,6 @@ button:hover {
     font-weight: 500;
     text-decoration: none;
 }
-
 .login-link a:hover {
     text-decoration: underline;
 }

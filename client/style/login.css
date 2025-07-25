@@ -61,12 +61,10 @@
     background-color: var(--background-color);
     font-size: 1rem;
 }
-
 .input-group input:focus {
     outline: none;
     border-color: var(--secondary-color);
 }
-
 .input-group input:hover {
     border-color: var(--secondary-color);
 }
@@ -81,7 +79,6 @@ button {
     cursor: pointer;
     transition: background-color 0.2s;
 }
-
 button:hover {
     background-color: #1e40af;
 }

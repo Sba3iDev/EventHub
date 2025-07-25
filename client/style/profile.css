@@ -27,7 +27,6 @@
     cursor: pointer;
     transition: font-size 0.1s;
 }
-
 .home:hover {
     font-size: 30px;
 }
@@ -68,12 +67,10 @@
     border: 1px solid transparent;
     padding: 10px 15px;
 }
-
 .container .data input:focus {
     outline: none;
     border-color: var(--secondary-color);
 }
-
 .container .data input:hover {
     border-color: var(--secondary-color);
 }
@@ -105,7 +102,6 @@
     transition: background-color 0.2s;
     width: 99px;
 }
-
 .container .buttons .edit:hover {
     background-color: #1e40af;
 }
@@ -125,7 +121,6 @@
     cursor: pointer;
     transition: background-color 0.2s;
 }
-
 .container .buttons .logout:hover {
     background-color: #b91c1c;
 }
@@ -147,7 +142,6 @@
     border-radius: 20px;
     font-weight: bold;
 }
-
 .delete button:hover {
     background-color: #eb4a25;
     color: #ffffff;
@@ -169,7 +163,6 @@
     font-size: 16px;
     box-shadow: 0 2px 6px rgba(37, 99, 235, 0.08);
 }
-
 .admin:hover {
     background-color: #1e40af;
     color: #fff;
@@ -239,7 +232,6 @@
     color: var(--primary-color);
     width: 111.8px;
 }
-
 .popup .ok-cancel .ok:hover {
     background-color: #1e40af;
 }
@@ -248,7 +240,6 @@
     background-color: #e2e8f0;
     color: #334155;
 }
-
 .popup .ok-cancel .cancel:hover {
     background-color: #cbd5e1;
 }

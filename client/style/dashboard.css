@@ -76,16 +76,13 @@
     border-radius: 5px;
     border: 1px solid transparent;
 }
-
 .events-container .nav .search input:focus {
     outline: none;
     border-color: var(--secondary-color);
 }
-
 .events-container .nav .search:hover input {
     border-color: var(--secondary-color);
 }
-
 .events-container .nav .search input::-webkit-search-cancel-button {
     -webkit-appearance: none;
     appearance: none;
@@ -112,11 +109,9 @@
     cursor: pointer;
     outline: none;
 }
-
 .events-container .filter select:hover {
     border-color: var(--secondary-color);
 }
-
 .events-container .filter select:focus {
     border-color: var(--secondary-color);
     box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
@@ -226,7 +221,6 @@ tr:hover {
     resize: none;
     transition: border-color 0.2s;
 }
-
 .popup .data-inputs input[type="text"]:focus,
 .popup .data-inputs input[type="date"]:focus,
 .popup .data-inputs input[type="time"]:focus,
@@ -235,7 +229,6 @@ tr:hover {
     border-color: var(--secondary-color);
     outline: none;
 }
-
 .popup .data-inputs input[type="text"]:hover,
 .popup .data-inputs input[type="date"]:hover,
 .popup .data-inputs input[type="time"]:hover,
